@@ -4,5 +4,3 @@ This feels pointless.
 Blog: [Desu Systems](https://desu.systems)  
 Archive: [Illegal Pics](https://illegal.pics)  
 Server: [HRT.PW](https://hrt.pw)  
-
-### [![HitCount](http://hits.dwyl.com/shekeru/shekeru.svg)](http://hits.dwyl.com/shekeru/shekeru)
