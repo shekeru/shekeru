@@ -1,0 +1,21 @@
+name: Metrics Generator
+on:
+  # Schedule updates (each hour)
+  schedule:
+    - cron: "0 * * * *"
+  # Lines below let you run workflow manually and on each commit
+  push: 
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Personal Metrics
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@latest
+        token: ${{ secrets.METRICS_TOKEN }}
+        with:
+          plugin_repositories: yes
