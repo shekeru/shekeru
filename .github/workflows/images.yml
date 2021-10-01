@@ -19,9 +19,10 @@ jobs:
         with:
           filename: body.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          config_order: base.repositories, base.activity, base.community, languages
           base: repositories, activity, community
-          plugin_languages: yes
+#           plugin_languages: yes
+#           plugin_languages_skipped: imgui, idle_master_extended, FFXIV_ACT_Plugin, source-sdk-csgo, misskey
+          config_order: base.repositories, base.activity, base.community
 #       - name: Header Metrics
 #         if: ${{ success() || failure() }}
 #         uses: shekeru/metrics@latest
