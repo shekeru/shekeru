@@ -13,39 +13,39 @@ jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Body Metrics
+      - name: Activity Metrics
         if: ${{ success() || failure() }}
         uses: shekeru/metrics@latest
         with:
           filename: body.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          base: activity, community, repositories
-          plugin_languages_skipped: imgui, idle_master_extended, FFXIV_ACT_Plugin, source-sdk-csgo, misskey
-          plugin_languages: yes
-          config_order: base, languages
-#       - name: Header Metrics
-#         if: ${{ success() || failure() }}
-#         uses: shekeru/metrics@latest
-#         with:
-#           filename: header.svg
-#           token: ${{ secrets.METRICS_TOKEN }}
-#           base: header
-#           config_order: base.header
-    
-#       - name: Left Metrics
-#         if: ${{ success() || failure() }}
-#         uses: shekeru/metrics@latest
-#         with:
-#           filename: left.svg
-#           token: ${{ secrets.METRICS_TOKEN }}
-#           base: repositories
-#           config_order: base.repositories
+          base: activity, community
           
-#       - name: Right Metrics
-#         if: ${{ success() || failure() }}
-#         uses: shekeru/metrics@latest
-#         with:
-#           filename: right.svg
-#           token: ${{ secrets.METRICS_TOKEN }}
-#           base: activity
-#           config_order: base.acitvity
+      - name: Header Metrics
+        if: ${{ success() || failure() }}
+        uses: shekeru/metrics@latest
+        with:
+          filename: header.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header
+    
+      - name: Repo Metrics
+        if: ${{ success() || failure() }}
+        uses: shekeru/metrics@latest
+        with:
+          filename: repos.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: repositories
+          
+      - name: Language Metrics
+        if: ${{ success() || failure() }}
+        uses: shekeru/metrics@latest
+        with:
+          filename: langs.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          plugin_languages_skipped: imgui, idle_master_extended, FFXIV_ACT_Plugin, source-sdk-csgo, misskey, 4-ho-mipt
+          plugin_languages_limit: 6
+          plugin_languages: yes
+          config_output: languages
+          config_order: languages
+          base: false
