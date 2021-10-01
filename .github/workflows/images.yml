@@ -20,7 +20,7 @@ jobs:
           filename: header.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: header
-          config_order: header
+          config_order: base.header
     
       - name: Left Metrics
         if: ${{ success() || failure() }}
