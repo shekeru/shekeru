@@ -13,29 +13,38 @@ jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Header Metrics
+      - name: Body Metrics
         if: ${{ success() || failure() }}
         uses: shekeru/metrics@latest
         with:
-          filename: header.svg
+          filename: body.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          base: header
-          config_order: base.header
+          config_order: base.repositories, base.activity, base.community, languages
+          base: repositories, activity, community
+          plugin_languages: yes
+#       - name: Header Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: header.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: header
+#           config_order: base.header
     
-      - name: Left Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: left.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: repositories
-          config_order: base.repositories
+#       - name: Left Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: left.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: repositories
+#           config_order: base.repositories
           
-      - name: Right Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: right.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: activity
-          config_order: base.acitvity
+#       - name: Right Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: right.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: activity
+#           config_order: base.acitvity
