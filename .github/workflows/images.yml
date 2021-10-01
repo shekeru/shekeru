@@ -2,7 +2,7 @@ name: Metrics Generator
 on:
   # Schedule updates (each hour)
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 0 * * *"
   # Lines below let you run workflow manually and on each commit
   push: 
     branches:
@@ -15,7 +15,9 @@ jobs:
     steps:
       - name: Personal Metrics
         if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@latest
-        token: ${{ secrets.METRICS_TOKEN }}
+        uses: shekeru/metrics@latest
         with:
+          filename: left.svg
+          plugin_repositories: yes
+          token: ${{ secrets.METRICS_TOKEN }}
           plugin_repositories: yes
