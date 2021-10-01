@@ -1,5 +1,5 @@
 # ₪ Shekychan ₪
-<img align="top" src="left.svg"> <img align="top" src="right.svg">
+<img align="top" src="body.svg">
 
 ## My Websites
 <table>
