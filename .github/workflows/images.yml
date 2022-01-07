@@ -1,51 +1,51 @@
-name: Metrics Generator
-on:
-  # Schedule updates (each hour)
-  schedule:
-    - cron: "0 0 * * *"
-  # Lines below let you run workflow manually and on each commit
-  push: 
-    branches:
-      - master
-      - main
-  workflow_dispatch:
-jobs:
-  github-metrics:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Activity Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: body.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: activity, community
+# name: Metrics Generator
+# on:
+#   # Schedule updates (each hour)
+#   schedule:
+#     - cron: "0 0 * * *"
+#   # Lines below let you run workflow manually and on each commit
+#   push: 
+#     branches:
+#       - master
+#       - main
+#   workflow_dispatch:
+# jobs:
+#   github-metrics:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Activity Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: body.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: activity, community
           
-      - name: Header Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: header.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: header
+#       - name: Header Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: header.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: header
     
-      - name: Repo Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: repos.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: repositories
+#       - name: Repo Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: repos.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           base: repositories
           
-      - name: Language Metrics
-        if: ${{ success() || failure() }}
-        uses: shekeru/metrics@latest
-        with:
-          filename: langs.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          plugin_languages_skipped: imgui, idle_master_extended, FFXIV_ACT_Plugin, source-sdk-csgo, misskey, 4-ho-mipt
-          plugin_languages_limit: 6
-          plugin_languages: yes
-          config_output: languages
-          config_order: languages
-          base: false
+#       - name: Language Metrics
+#         if: ${{ success() || failure() }}
+#         uses: shekeru/metrics@latest
+#         with:
+#           filename: langs.svg
+#           token: ${{ secrets.METRICS_TOKEN }}
+#           plugin_languages_skipped: imgui, idle_master_extended, FFXIV_ACT_Plugin, source-sdk-csgo, misskey, 4-ho-mipt
+#           plugin_languages_limit: 6
+#           plugin_languages: yes
+#           config_output: languages
+#           config_order: languages
+#           base: false
